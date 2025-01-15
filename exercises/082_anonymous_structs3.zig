@@ -89,7 +89,7 @@ fn printTuple(tuple: anytype) void {
     //
     //     Hint: remember 'inline' loops?
     //
-    for (fields) |field| {
+    inline for (fields) |field| {
         // 3. Print the field's name, type, and value.
         //
         //     Each 'field' in this loop is one of these:
@@ -117,9 +117,9 @@ fn printTuple(tuple: anytype) void {
         //
         // The first field should print as: "0"(bool):true
         print("\"{s}\"({any}):{any} ", .{
-            field.???,
-            field.???,
-            ???,
+            field.name,
+            field.type,
+            @field(tuple, field.name),
         });
     }
 }
